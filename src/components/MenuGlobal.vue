@@ -1,10 +1,12 @@
 <script>
 import imgUrl from '../assets/logo.png'
 import Menu from './Menu.vue'
+import AppFooter from './AppFooter.vue';
 
   export default {
     components: {
-        Menu
+        Menu,
+        AppFooter
     },
     data: () => ({
       sourceImage:imgUrl,
@@ -58,7 +60,7 @@ import Menu from './Menu.vue'
           class="hidden-md-and-up"
           @click="drawer = true">
         </v-app-bar-nav-icon>
-        <v-row justify="center" align="center" class="mx-5">
+        <v-row justify="center" align="center">
           <v-col md="4" sm="12" xs="12">
             <v-toolbar-title>
               <v-row justify="center" align="center">
@@ -69,7 +71,7 @@ import Menu from './Menu.vue'
                   ></v-img>
                 </v-col>
                 <v-col class="hidden-sm-and-down" md="8">
-                  <span>
+                  <span class="title">
                     Association ASSISE
                   </span>
                 </v-col>
@@ -100,6 +102,7 @@ import Menu from './Menu.vue'
                 <v-list-item
                   v-bind="props"
                   :title="item.title"
+                  class="title"
                 ></v-list-item>
               </template>
               <v-list-item
@@ -109,6 +112,7 @@ import Menu from './Menu.vue'
                 @click="$router.push(sub.id ?
                 {name: sub.link, params: { id: sub.id } } :
                 {name: sub.link})"
+                class="title"
               ></v-list-item>
             </v-list-group>
 
@@ -118,6 +122,7 @@ import Menu from './Menu.vue'
               @click="$router.push(item.id ?
                 {name: item.link, params: { id: item.id } } :
                 {name: item.link})"
+              class="title"
             ></v-list-item>
 
           </span>
@@ -126,6 +131,7 @@ import Menu from './Menu.vue'
       <v-main>
           <router-view></router-view>
       </v-main>
+      <app-footer></app-footer>
   
     </v-app>  
   </template>
@@ -134,5 +140,15 @@ import Menu from './Menu.vue'
   p{
     font-family:Arial, Helvetica, sans-serif;
     font-size:14px;
+  }
+
+  .title{
+    font-family: "Gagalin";
+    font-size: 1.5rem;
+  }
+
+  @font-face {
+    font-family: "Gagalin";
+    src: url("../assets/Gagalin-Regular.otf")
   }
   </style>
